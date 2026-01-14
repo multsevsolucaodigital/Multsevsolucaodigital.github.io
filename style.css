@@ -886,3 +886,16 @@ label > textarea {
 .logo {
   filter: brightness(0) invert(1); /* Transforma logo escura em clara */
 }
+.logo-e-nome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nome-site {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+}
