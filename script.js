@@ -1,7 +1,7 @@
 /* ======================================================
    CONFIGURAÇÕES GERAIS
 ====================================================== */
-const WHATSAPP_NUMBER = "244959622160";
+const WHATSAPP_NUMBER = "244952805504";
 const EMAIL_ADDRESS = "multsevsolucaodigital@gmail.com";
 
 /* ======================================================
