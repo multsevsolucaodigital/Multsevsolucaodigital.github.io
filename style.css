@@ -882,3 +882,7 @@ label > textarea {
     border-radius: 6px;
   }
 }
+/* Garantir que o logo seja visível em todos os dispositivos */
+.logo {
+  filter: brightness(0) invert(1); /* Transforma logo escura em clara */
+}
