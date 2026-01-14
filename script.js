@@ -1,130 +1,197 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const header = document.getElementById('header');
-    const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
-    const navLinks = document.querySelector('.nav-links');
-    const revealElements = document.querySelectorAll('.reveal');
+/* ======================================================
+   CONFIGURAÇÕES GERAIS
+====================================================== */
+const WHATSAPP_NUMBER = "244959622160";
+const EMAIL_ADDRESS = "multsevsolucaodigital@gmail.com";
 
-    let ticking = false;
-
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            handleScroll();
-            ticking = false;
-        });
-        ticking = true;
-    }
-});
-
-function handleScroll() {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-
-    revealOnScroll();
+/* ======================================================
+   FUNÇÕES DE CONTACTO
+====================================================== */
+function abrirWhatsapp() {
+  const mensagem = `Olá, MultSev Solução Digital.\n\nGostaria de obter mais informações sobre os serviços.\n\nNome:\nServiço de interesse:\nDescrição do projeto:`;
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
+  window.open(url, "_blank");
 }
 
-    // 3. Menu Mobile funcional
-    mobileMenuIcon.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        
-        // Animação do ícone hambúrguer
-        const spans = mobileMenuIcon.querySelectorAll('span');
-        spans[0].style.transform = navLinks.classList.contains('active') ? 'rotate(45deg) translate(5px, 5px)' : 'none';
-        spans[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
-        spans[2].style.transform = navLinks.classList.contains('active') ? 'rotate(-45deg) translate(7px, -7px)' : 'none';
+function abrirEmail() {
+  const assunto = "Contacto Profissional - MultSev Solução Digital";
+  const corpo = `Olá, MultSev Solução Digital.\n\nGostaria de informações sobre os serviços disponíveis.\n\nNome:\nServiço pretendido:\nDetalhes do projeto:`;
+  window.location.href = `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+}
+
+/* ======================================================
+   ANIMAÇÃO SUAVE AO SCROLL
+====================================================== */
+const elementosAnimados = document.querySelectorAll(".servico, .livraria, .contacto, .hero-text, .hero-img");
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("visivel");
     });
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
+  },
+  { threshold: 0.15 }
+);
+elementosAnimados.forEach(el => el && observer.observe(el));
+
+/* ======================================================
+   HEADER DINÂMICO
+====================================================== */
+let ultimoScroll = 0;
+const header = document.querySelector(".header");
+if (header) {
+  window.addEventListener("scroll", () => {
+    const scrollAtual = window.pageYOffset;
+    header.style.transform = scrollAtual > ultimoScroll && scrollAtual > 120 ? "translateY(-100%)" : "translateY(0)";
+    ultimoScroll = scrollAtual;
+  });
+}
+
+/* ======================================================
+   MICRO-INTERAÇÕES NOS BOTÕES
+====================================================== */
+document.querySelectorAll("button, .livraria a").forEach(botao => {
+  botao.addEventListener("mouseenter", () => botao.style.transform = "translateY(-3px)");
+  botao.addEventListener("mouseleave", () => botao.style.transform = "translateY(0)");
+});
+
+/* ======================================================
+   MODAL DE CONSULTA
+====================================================== */
+const modal = document.getElementById("consultModal");
+const openBtn = document.getElementById("openConsult");
+const closeBtn = document.querySelector(".close-modal");
+
+if (modal && openBtn && closeBtn) {
+  openBtn.onclick = e => {
+    e.preventDefault();
+    modal.classList.add("active");
+  };
+  closeBtn.onclick = () => modal.classList.remove("active");
+  modal.addEventListener("click", e => {
+    if (e.target === modal) modal.classList.remove("active");
+  });
+}
+
+/* ======================================================
+   COPIAR IBAN
+====================================================== */
+function copiarIBAN() {
+  const ibanEl = document.getElementById("iban");
+  const msgEl = document.getElementById("msg");
+  if (!ibanEl || !msgEl) return;
+
+  const text = ibanEl.innerText.trim();
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => {
+      msgEl.style.display = "block";
+      setTimeout(() => msgEl.style.display = "none", 2000);
+    });
+  } else {
+    // fallback antigo
+    const range = document.createRange();
+    range.selectNode(ibanEl);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();
+    msgEl.style.display = "block";
+    setTimeout(() => msgEl.style.display = "none", 2000);
+  }
+}
+
+/* ======================================================
+   ENVIO DO FORMULÁRIO PARA WHATSAPP (COM FORMATO MELHORADO)
+====================================================== */
+const consultForm = document.getElementById("consultForm");
+if (consultForm) {
+  consultForm.onsubmit = e => {
     e.preventDefault();
 
-    const btn = document.getElementById("whatsappBtn");
-    btn.innerText = "Abrindo WhatsApp…";
-    btn.disabled = true;
+    const name = document.getElementById("name")?.value || "Não informado";
+    const whatsapp = document.getElementById("whatsapp")?.value || "Não informado";
+    const type = document.getElementById("type")?.value || "Não especificado";
+    const local = document.getElementById("local")?.value || "Não informado";
+    const data = document.getElementById("data")?.value || "";
+    const hora = document.getElementById("hora")?.value || "";
+    const mensage = document.getElementById("mensage")?.value || "Sem mensagem.";
 
-    const nome = document.getElementById("nome").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const mensagem = document.getElementById("mensagem").value.trim();
+    // Formata data/hora atual para registrar quando foi feito o pedido
+    const now = new Date();
+    const dataEnvio = now.toLocaleDateString("pt-AO");
+    const horaEnvio = now.toLocaleTimeString("pt-AO", { hour12: false });
 
-    const agora = new Date();
-    const data = agora.toLocaleDateString("pt-BR");
-    const hora = agora.toLocaleTimeString("pt-BR");
+    let text = 
+`*📌 SOLICITAÇÃO DE CONSULTA DIGITAL*\n\n` +
+`👤 *Nome:* ${name}\n` +
+`📱 *WhatsApp:* ${whatsapp}\n` +
+`🎯 *Tipo de consulta:* ${type}\n` +
+`📍 *Local de atendimento:* ${local}\n\n` +
+`💬 *Necessidade:*\n${mensage}`;
 
-    const texto =
-`👋 *Novo contacto via site*
-━━━━━━━━━━━━━━━━━━━
-🏢 *Empresa:* MultSev Solução Digital
-🌐 *Origem:* Site institucional
-
-👤 *Nome:* ${nome}
-📧 *Email:* ${email}
-
-💬 *Mensagem do cliente:*
-"${mensagem}"
-
-━━━━━━━━━━━━━━━━━━━
-📊 *Objetivo:* Promoção de serviços / marketing
-📆 *Data:* ${data}
-⏰ *Hora:* ${hora}
-
-🚀 Estou interessado(a) em soluções digitais estratégicas para crescimento do meu negócio.
-`;
-
-    const numeroWhatsApp = "244959622160";
-    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
-
-    window.open(url, "_blank");
-
-    // (opcional) restaurar botão se o utilizador voltar
-    setTimeout(() => {
-        btn.innerText = "Enviar Mensagem";
-        btn.disabled = false;
-    }, 4000);
-});
-
-    // 4. Scroll suave para links internos
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            // Fechar menu mobile se estiver aberto
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                // Resetar ícone
-                const spans = mobileMenuIcon.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                const headerHeight = header.offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // Função para revelar elementos ao rolar
-    function revealOnScroll() {
-        revealElements.forEach(el => {
-            const elementTop = el.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (elementTop < windowHeight - 100) {
-                el.classList.add('active');
-            }
-        });
+    if (data && hora) {
+      text += `\n\n📅 *Agendamento solicitado:*\n🗓 ${data}\n⏰ ${hora}`;
     }
 
-    // Executar uma vez no carregamento
-    revealOnScroll();
+    text += `\n\n—\n*Enviado em:* ${dataEnvio} às ${horaEnvio}`;
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
+  };
+}
+
+/* ======================================================
+   MENU HAMBÚRGUER MOBILE (CORRIGIDO E GARANTIDO)
+====================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const nav = document.querySelector(".main-nav");
+
+  if (hamburger && nav) {
+    hamburger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      nav.classList.toggle("active");
+    });
+
+    nav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("active");
+      });
+    });
+  }
 });
+
+/* ======================================================
+   ACESSIBILIDADE BÁSICA
+====================================================== */
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    const ativo = document.activeElement;
+    if (ativo?.tagName === "BUTTON" || ativo?.tagName === "A") {
+      ativo.click();
+    }
+  }
+});
+
+/* ======================================================
+   PERFORMANCE & LOG
+====================================================== */
+console.log("MultSev Solução Digital — Script carregado com sucesso.");
+// Tempo de inatividade: 3 minutos = 180.000 milissegundos
+const INATIVIDADE_LIMITE = 180000; // 3 minutos
+let tempoInativo = null;
+
+function resetarInatividade() {
+  if (tempoInativo) clearTimeout(tempoInativo);
+  tempoInativo = setTimeout(() => {
+    // Força recarregamento da página (com bypass de cache)
+    window.location.reload(true);
+  }, INATIVIDADE_LIMITE);
+}
+
+// Monitorar atividade do usuário
+['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'].forEach(evento => {
+  window.addEventListener(evento, resetarInatividade, true);
+});
+
+// Iniciar o contador ao carregar a página
+resetarInatividade();
