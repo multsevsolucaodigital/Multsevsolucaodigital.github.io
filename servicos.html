@@ -1,88 +1,362 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explorar Serviços | MultSev Solução Digital</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviços - MultSev</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    <!-- SEO básico -->
-    <meta name="description" content="Explore serviços e empresas promovidas pela MultSev Solução Digital. Encontre profissionais e negócios de confiança.">
+/* HEADER */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
 
-    <!-- Fonte -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  backdrop-filter: blur(12px);
+  background: rgba(10, 15, 30, 0.7);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
 
-    <!-- CSS principal -->
-    <link rel="stylesheet" href="style.css">
+/* CONTAINER */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 20px;
+}
+
+/* LOGO */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-weight: bold;
+  font-size: 18px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* MENU */
+.nav {
+  display: flex;
+  gap: 25px;
+}
+
+.nav a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 15px;
+  position: relative;
+}
+
+/* LINHA ANIMADA */
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: orange;
+  transition: 0.3s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* BOTÃO CTA */
+.cta-btn {
+  background: linear-gradient(45deg, orange, #ff6600);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
+}
+
+/* MENU MOBILE */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+
+  .nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #0f172a;
+    width: 200px;
+    flex-direction: column;
+    padding: 20px;
+    display: none;
+  }
+
+  .nav.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .cta-btn {
+    display: none;
+  }
+}
+body {
+  padding-top: 80px;
+}
+
+#btnContato {
+  position: fixed;
+  bottom: 80px; /* acima do botão de início */
+  right: 20px;
+  background: linear-gradient(135deg, #001aff, #ff6a00);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  transition: 0.3s;
+  z-index: 999;
+}
+
+#btnContato:hover {
+  transform: scale(1.1);
+}
+#btnContato {
+  backdrop-filter: blur(10px);
+}
+#btnContato svg {
+  width: 22px;
+  height: 22px;
+}
+</style>
 </head>
+<header class="header">
+  
+  <div class="header-container">
 
+    <!-- LOGO -->
+    <div class="brand">
+      <img src="logo3.png" alt="MultSev" class="brand-logo">
+      <span class="brand-name">MultSev</span>
+    </div>
+
+    <!-- MENU -->
+    <nav class="nav" id="navMenu">
+      <a href="index.html">Início</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="contato.html">contato</a>
+    </nav>
+
+    <!-- BOTÃO WHATSAPP -->
+    <a href="https://wa.me/244959622160" class="cta-btn">
+      Falar Agora
+    </a>
+
+    <!-- MENU MOBILE -->
+    <div class="menu-toggle" id="menuToggle">
+      ☰
+    </div>
+
+  </div>
+
+</header>
 <body>
 
-<!-- HEADER -->
-<header class="servicos-header">
-    <div class="container">
-        <h1>Explorar Serviços</h1>
-        <p>Empresas e profissionais promovidos pela MultSev Solução Digital</p>
+<div class="bg"></div>
+
+<div class="container">
+
+  <h1 class="fade-up">Nossos Serviços</h1>
+  <p class="sub">Soluções completas para crescer no digital</p>
+
+  <!-- SERVIÇO 1 -->
+  <div id="consultoria" class="servico-card">
+    <img src="web.png">
+    <div>
+      <h2>Desenvolvimento Web</h2>
+      <p>Criamos sites modernos, rápidos e focados em conversão.</p>
+
+      <ul>
+        <li>✔ Sites profissionais</li>
+        <li>✔ Landing pages que vendem</li>
+        <li>✔ Otimização para mobile</li>
+      </ul>
+
+      <a href="https://wa.me/244959622160" class="btn">Quero este serviço</a>
     </div>
-</header>
+  </div>
 
-<!-- SEÇÃO DE SERVIÇOS -->
-<section class="servicos-section">
+  <!-- SERVIÇO 2 -->
+  <div id="design" class="servico-card">
+    <img src="design.png">
+    <div>
+      <h2>Design Gráfico</h2>
+      <p>Design que chama atenção e gera impacto visual.</p>
 
-    <div class="servicos-grid">
+      <ul>
+        <li>✔ Logotipos profissionais</li>
+        <li>✔ Artes para redes sociais</li>
+        <li>✔ Edição de vídeos</li>
+      </ul>
 
-        <!-- CARD DE SERVIÇO -->
-        <div class="servico-card">
-            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Serviço em destaque">
-            <div class="servico-content">
-                <h3>Nome da Empresa</h3>
-                <p>Descrição curta do serviço ou negócio promovido.</p>
-                <a href="https://wa.me/244959622160" target="_blank" class="servico-btn">
-                    Contactar no WhatsApp
-                </a>
-            </div>
-        </div>
-
-        <!-- CARD DE SERVIÇO -->
-        <div class="servico-card">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" alt="Serviço profissional">
-            <div class="servico-content">
-                <h3>Serviço Profissional</h3>
-                <p>Marketing, consultoria, tecnologia ou outro serviço.</p>
-                <a href="https://wa.me/244959622160" target="_blank" class="servico-btn">
-                    Contactar no WhatsApp
-                </a>
-            </div>
-        </div>
-
-        <!-- CARD DE SERVIÇO -->
-        <div class="servico-card">
-            <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd" alt="Negócio promovido">
-            <div class="servico-content">
-                <h3>Negócio em Destaque</h3>
-                <p>Este espaço é reservado para empresas parceiras.</p>
-                <a href="https://wa.me/244959622160" target="_blank" class="servico-btn">
-                    Contactar no WhatsApp
-                </a>
-            </div>
-        </div>
-
+      <a href="https://wa.me/244959622160" class="btn">Quero este serviço</a>
     </div>
+  </div>
 
-</section>
+  <!-- SERVIÇO 3 -->
+  <div id="trafego" class="servico-card">
+    <img src="marketing.png">
+    <div>
+      <h2>Marketing Digital</h2>
+      <p>Estratégias para gerar clientes todos os dias.</p>
 
-<!-- CTA FINAL -->
-<section class="cta-servicos">
-    <h2>Quer ver o seu serviço aqui?</h2>
-    <p>Promova o seu negócio com a MultSev Solução Digital e alcance mais clientes.</p>
-    <a href="index.html#promover" class="cta-btn">
-        Promover Meus Serviços
-    </a>
-</section>
+      <ul>
+        <li>✔ Tráfego pago (Facebook Ads)</li>
+        <li>✔ Gestão de páginas</li>
+        <li>✔ Consultoria estratégica</li>
+      </ul>
 
-<!-- FOOTER -->
+      <a href="https://wa.me/244959622160" class="btn">Quero este serviço</a>
+    </div>
+  </div>
+
+  <!-- SERVIÇO 4 -->
+  <div id="formacao" class="servico-card">
+    <img src="formacao.png">
+    <div>
+      <h2>Formação Profissional</h2>
+      <p>Do zero ao profissional no digital.</p>
+
+      <ul>
+        <li>✔ Fundamentos do marketing</li>
+        <li>✔ Estratégias de anúncios</li>
+        <li>✔ Criação de ebooks</li>
+      </ul>
+
+      <a href="https://wa.me/244959622160" class="btn">Quero aprender</a>
+    </div>
+  </div>
+
+  <!-- SERVIÇO 5 -->
+  <div id="visa" class="servico-card">
+    <img src="visa.png">
+    <div>
+      <h2>Abertura de Conta Visa</h2>
+      <p>Facilitamos sua entrada no mundo digital global.</p>
+
+      <ul>
+        <li>✔ Criação rápida</li>
+        <li>✔ Suporte completo</li>
+        <li>✔ Segurança garantida</li>
+      </ul>
+
+      <a href="https://wa.me/244959622160" class="btn">Quero abrir conta</a>
+    </div>
+  </div>
+
+</div>
+
+<a href="contato.html" id="btnContato" title="Entrar em contato">
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 24 24">
+    <path d="M12 3C6.48 3 2 6.94 2 11.5c0 2.54 1.36 4.8 3.5 6.29V21l3.09-1.7c1.08.3 2.23.47 3.41.47 5.52 0 10-3.94 10-8.5S17.52 3 12 3z"/>
+  </svg>
+</a>
+
+<script>
+const toggle = document.getElementById("menuToggle");
+const nav = document.getElementById("navMenu");
+
+toggle.onclick = () => {
+  nav.classList.toggle("active");
+};
+
+window.addEventListener("scroll", function() {
+  let btn = document.getElementById("btnContato");
+
+  if (document.documentElement.scrollTop > 150) {
+    btn.style.display = "flex";
+  } else {
+    btn.style.display = "none";
+  }
+});
+</script>
+
 <footer class="footer">
-    <p>© 2026 MultSev Solução Digital. Todos os direitos reservados.</p>
-</footer>
 
+  <div class="footer-container">
+
+    <!-- LOGO + DESCRIÇÃO -->
+    <div class="footer-box">
+  
+      <p>
+        A MultSev Solução Digital é especializada em transformar ideias em resultados reais no mundo digital.
+      </p>
+    </div>
+
+    <!-- SERVIÇOS -->
+    <div class="footer-box">
+      <h3>Serviços</h3>
+      <ul>
+        <li>Desenvolvimento Web</li>
+        <li>Design Gráfico</li>
+        <li>Marketing Digital</li>
+        <li>Formação Profissional</li>
+        <li>Abertura de Conta Visa</li>
+      </ul>
+    </div>
+
+    <!-- CONTATO -->
+    <div class="footer-box">
+      <h3>Contato</h3>
+      <p>📞 +244 959 622 160</p>
+      <p>📍 Huíla - Angola</p>
+      <a href="https://wa.me/244959622160" class="footer-btn">Falar no WhatsApp</a>
+    </div>
+
+  </div>
+
+  <!-- LINHA FINAL -->
+  <div class="footer-bottom">
+    <p>© 2026 MultSev Solução Digital — Todos os direitos reservados</p>
+  </div>
+
+</footer>
 </body>
 </html>

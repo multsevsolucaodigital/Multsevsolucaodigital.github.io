@@ -2,466 +2,98 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<title>MultSev Solução Digital | Sites, Logotipos & Consultoria</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MultSev Solução Digital</title>
 
-<!-- SEO AVANÇADO -->
-<meta name="description" content="MultSev Solução Digital oferece criação de sites profissionais, logotipos modernos, consultoria estratégica e uma livraria gratuita com conteúdos de alto nível.">
-<meta name="keywords" content="criação de sites Angola, logotipos profissionais, consultoria digital, MultSev, livraria gratuita">
-<meta name="author" content="MultSev Solução Digital">
-
-<!-- ================= SEO ESTRUTURAL AVANÇADO ================= -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "MultSev Solução Digital",
-  "url": "https://multsev-solucao-digital.github.io",
-  "logo": "https://multsev-solucao-digital.github.io/logo.png",
-  "description": "Empresa especializada em criação de sites profissionais, logotipos modernos, consultoria estratégica e conteúdos educativos gratuitos.",
-  "sameAs": [
-    "https://cybersev-solucao-digital.github.io/",
-    "https://livrariaconstrutiva223.github.io/"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "Atendimento Comercial",
-    "availableLanguage": ["Portuguese"]
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "MultSev Solução Digital",
-  "url": "https://multsev-solucao-digital.github.io",
-  "inLanguage": "pt"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Criação de Sites Profissionais",
-  "provider": {
-    "@type": "Organization",
-    "name": "MultSev Solução Digital"
-  },
-  "areaServed": "AO",
-  "availableChannel": {
-    "@type": "ServiceChannel",
-    "serviceLocation": {
-      "@type": "Place",
-      "name": "Online"
-    }
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Blog",
-  "name": "Livraria Construtiva",
-  "url": "https://livrariaconstrutiva223.github.io/",
-  "description": "Livraria gratuita com conteúdos de alto nível sobre tecnologia, negócios e desenvolvimento pessoal."
-}
-</script>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+<!-- ÍCONE SERVIÇOS -->
+<a href="servicos.html" class="servico-float">
+  ⚙️
+</a>
+<div class="bg"></div>
 
-<header class="header">
-  <div class="logo-e-nome">
-  <img src="logo.png" class="logo">
-  <span class="nome-site">MultSev Solução Digital</span>
+<div class="container">
+
+  <img src="logo3.png" class="logo fade-down">
+
+  <!-- PASSO 1 -->
+  <div id="step1" class="step active">
+    <h1 class="fade-up">O que você quer resolver hoje?</h1>
+    <p class="sub fade-up">Escolha e veja a solução perfeita</p>
+
+    <div class="options">
+      <button onclick="nextStep('clientes')" class="fade-up">📈 Quero <strong>+</strong> Clientes</button>
+      <button onclick="nextStep('dinheiro')" class="fade-up">🌆 Quero Melhorar o visual da minha empresa</button>
+      <button onclick="nextStep('aprender')" class="fade-up">🎓 Quero Aprender a ganhar dinheiro</button>
+      <button onclick="nextStep('crescer')" class="fade-up">🚀 Quero Crescer em escala</button>
+    </div>
+  </div>
+
+  <!-- PASSO 2 -->
+  <div id="step2" class="step">
+
+    <div class="card">
+
+      <img id="imagem" class="imagem">
+
+      <div class="texto">
+        <h1 id="titulo"></h1>
+        <p id="descricao"></p>
+        <ul id="beneficios"></ul>
+
+        <a id="btnAcao" class="btn pulse">Ver solução</a>
+        <button onclick="voltar()" class="back">← Voltar</button>
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
-  <button class="hamburger" aria-label="Menu de navegação">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  <nav class="main-nav">
-    <a href="#inicio">Início</a>
-    <a href="#servicos">Serviços</a>
-    <a href="#livraria">Livraria</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-</header>
+<footer class="footer">
 
-<!-- HERO -->
-<section id="inicio" class="hero">
-  <div class="hero-text">
-    <h1>Soluções Digitais de Alto Nível</h1>
-    <p>
-      Criamos presença digital profissional, marcas fortes
-      e estratégias sólidas para negócios que querem crescer
-      com seriedade no ambiente digital.
-    </p>
-    <button onclick="abrirWhatsapp()">Falar com Especialista</button>
-  </div>
+  <div class="footer-container">
 
-  <!-- IMAGEM HERO (SVG) -->
-  <div class="hero-img">
-    <svg viewBox="0 0 500 400" aria-label="Tecnologia e inovação digital">
-      <rect width="500" height="400" rx="20" fill="#0b1d3a"/>
-      <rect x="40" y="60" width="420" height="260" rx="15" fill="#ffffff"/>
-      <rect x="70" y="90" width="360" height="40" rx="6" fill="#ff8c00"/>
-      <rect x="70" y="150" width="180" height="20" fill="#0b1d3a"/>
-      <rect x="70" y="190" width="240" height="20" fill="#0b1d3a"/>
-      <circle cx="420" cy="110" r="18" fill="#ff8c00"/>
-    </svg>
-  </div>
-</section>
-
-<!-- SERVIÇOS -->
-<section id="servicos" class="servicos">
-  <h2>Serviços Profissionais</h2>
-
-  <!-- SERVIÇO 1 -->
-  <article class="servico">
-    <div class="servico-img">
-      <svg viewBox="0 0 300 220" aria-label="Criação de sites profissionais">
-        <rect width="300" height="220" rx="15" fill="#eaf0f6"/>
-        <rect x="30" y="40" width="240" height="140" rx="10" fill="#0b1d3a"/>
-        <rect x="50" y="70" width="200" height="20" fill="#ff8c00"/>
-        <rect x="50" y="110" width="120" height="15" fill="#ffffff"/>
-      </svg>
-    </div>
-    <div class="servico-texto">
-      <h3>Criação de Sites Profissionais</h3>
+    <!-- LOGO + DESCRIÇÃO -->
+    <div class="footer-box">
+  
       <p>
-        Desenvolvemos sites rápidos, responsivos e otimizados para SEO,
-        pensados para gerar credibilidade, autoridade e conversão real.
+        A MultSev Solução Digital é especializada em transformar ideias em resultados reais no mundo digital.
       </p>
     </div>
-  </article>
 
-  <!-- PREÇOS -->
-  <section class="pricing section-padding bg-alt">
-    <div class="container">
-      <div class="section-header">
-        <h2>Planos e Investimento</h2>
-        <p>Soluções claras, preços transparentes e foco em resultados reais.</p>
-        <div class="underline"></div>
-      </div>
-
-      <div class="pricing-grid">
-        <!-- Landing Page -->
-        <div class="price-card">
-          <h3>Landing Page</h3>
-          <span class="price">30.000 Kz</span>
-          <p>Página única, objetiva e profissional, ideal para quem precisa marcar presença online de forma rápida e eficiente.</p>
-          <ul>
-            <li>✔ Estrutura simples e moderna</li>
-            <li>✔ Design responsivo (telemóvel e computador)</li>
-            <li>✔ Conteúdo institucional básico</li>
-            <li>✔ Entrega rápida</li>
-          </ul>
-          <a href="https://wa.me/244952805504?text=O lá! Tenho interesse no serviço *Landing Page (30.000 Kz)*. Gostaria de mais informações." class="btn-whatsapp" target="_blank">Solicitar agora</a>
-        </div>
-
-        <!-- Landing Page Profissional -->
-        <div class="price-card">
-          <h3>Landing Page Profissional</h3>
-          <span class="price">60.000 Kz</span>
-          <p>Página estratégica focada em conversão, ideal para captar clientes, gerar contactos e apresentar serviços de forma persuasiva.</p>
-          <ul>
-            <li>✔ Estrutura de conversão</li>
-            <li>✔ Copywriting estratégico</li>
-            <li>✔ Botões de ação (WhatsApp)</li>
-            <li>✔ Design profissional e responsivo</li>
-          </ul>
-          <a href="https://wa.me/244952805504?text=O lá! Quero saber mais sobre a *Landing Page Profissional (60.000 Kz)*." class="btn-whatsapp" target="_blank">Solicitar agora</a>
-        </div>
-
-        <!-- Site Institucional -->
-        <div class="price-card highlight">
-          <h3>Site Institucional</h3>
-          <span class="price">100.000 Kz</span>
-          <p>Site completo para apresentar sua empresa, serviços e contactos, transmitindo confiança e profissionalismo.</p>
-          <ul>
-            <li>✔ Páginas: Início, Sobre, Serviços e Contactos</li>
-            <li>✔ Layout profissional</li>
-            <li>✔ Estrutura clara e organizada</li>
-            <li>✔ Otimização básica para Google</li>
-          </ul>
-          <a href="https://wa.me/244952805504?text=O lá! Tenho interesse no *Site Institucional (100.000 Kz)*." class="btn-whatsapp" target="_blank">Solicitar agora</a>
-        </div>
-
-        <!-- Site Empresarial -->
-        <div class="price-card">
-          <h3>Site Empresarial</h3>
-          <span class="price">180.000 Kz</span>
-          <p>Solução ideal para empresas que querem autoridade digital, presença forte e comunicação clara com seus clientes.</p>
-          <ul>
-            <li>✔ Estrutura avançada</li>
-            <li>✔ Design alinhado à marca</li>
-            <li>✔ Seções estratégicas</li>
-            <li>✔ Integração com WhatsApp</li>
-          </ul>
-          <a href="https://wa.me/244952805504?text=O lá! Gostaria de informações sobre o *Site Empresarial (180.000 Kz)*." class="btn-whatsapp" target="_blank">Solicitar agora</a>
-        </div>
-
-        <!-- Site Corporativo Avançado -->
-        <div class="price-card">
-          <h3>Site Corporativo Avançado</h3>
-          <span class="price">250.000 Kz</span>
-          <p>Projeto robusto e escalável, pensado para empresas que querem crescer, transmitir autoridade e profissionalismo máximo.</p>
-          <ul>
-            <li>✔ Arquitetura profissional</li>
-            <li>✔ Design premium</li>
-            <li>✔ Conteúdo estratégico</li>
-            <li>✔ Base para expansão futura</li>
-          </ul>
-          <a href="https://wa.me/244952805504?text=O lá! Quero conhecer melhor o *Site Corporativo Avançado (250.000 Kz)*." class="btn-whatsapp" target="_blank">Solicitar agora</a>
-        </div>
-
-        <!-- Plataforma Profissional -->
-        <div class="price-card">
-          <h3>Plataforma Profissional</h3>
-          <span class="price">400.000 Kz</span>
-          <p>Plataforma web personalizada para negócios que precisam de funcionalidades específicas e estrutura sólida.</p>
-          <ul>
-            <li>✔ Desenvolvimento sob medida</li>
-            <li>✔ Estrutura escalável</li>
-            <li>✔ Design funcional</li>
-            <li>✔ Suporte inicial</li>
-          </ul>
-          <a href="https://wa.me/244952805504?text=O lá! Tenho interesse na *Plataforma Profissional (400.000 Kz)*." class="btn-whatsapp" target="_blank">Solicitar agora</a>
-        </div>
-
-        <!-- Plataforma Premium -->
-        <div class="price-card">
-          <h3>Plataforma Premium</h3>
-          <span class="price">700.000 Kz</span>
-          <p>Solução completa e personalizada, pensada para projetos de alto nível e empresas exigentes.</p>
-          <ul>
-            <li>✔ Projeto exclusivo</li>
-            <li>✔ Alto nível de personalização</li>
-            <li>✔ Estrutura avançada</li>
-            <li>✔ Acompanhamento estratégico</li>
-          </ul>
-          <a href="https://wa.me/244952805504?text=O lá! Quero detalhes sobre a *Plataforma Premium (700.000 Kz)*." class="btn-whatsapp" target="_blank">Solicitar agora</a>
-        </div>
-
-        <!-- Solução Corporativa -->
-        <div class="price-card premium">
-          <h3>Solução Corporativa</h3>
-          <span class="price">800.000 Kz</span>
-          <p>Projeto corporativo de alto padrão, totalmente personalizado, focado em performance, imagem e crescimento sustentável.</p>
-          <ul>
-            <li>✔ Análise estratégica completa</li>
-            <li>✔ Desenvolvimento sob medida</li>
-            <li>✔ Design premium</li>
-            <li>✔ Solução de alto impacto</li>
-          </ul>
-          <a href="https://wa.me/244952805504?text=O lá! Quero falar sobre a *Solução Corporativa (800.000 Kz)*." class="btn-whatsapp" target="_blank">Solicitar agora</a>
-        </div>
-      </div>
+    <!-- SERVIÇOS -->
+    <div class="footer-box">
+      <h3>Serviços</h3>
+      <ul>
+        <li>Desenvolvimento Web</li>
+        <li>Design Gráfico</li>
+        <li>Marketing Digital</li>
+        <li>Formação Profissional</li>
+        <li>Abertura de Conta Visa</li>
+      </ul>
     </div>
-  </section>
 
-  <!-- SERVIÇO 2 -->
-  <article class="servico invertido">
-    <div class="servico-img">
-      <svg viewBox="0 0 300 220" aria-label="Criação de logotipos">
-        <rect width="300" height="220" rx="15" fill="#fff4e6"/>
-        <circle cx="150" cy="110" r="60" fill="#ff8c00"/>
-        <text x="150" y="118" text-anchor="middle" fill="#0b1d3a" font-size="24" font-weight="bold">LOGO</text>
-      </svg>
+    <!-- CONTATO -->
+    <div class="footer-box">
+      <h3>Contato</h3>
+      <p>📞 +244 959 622 160</p>
+      <p>📍 Huíla - Angola</p>
+      <a href="https://wa.me/244959622160" class="footer-btn">Falar no WhatsApp</a>
     </div>
-    <div class="servico-texto">
-      <h3>Criação de Logotipos</h3>
-      <p>
-        Criamos identidades visuais fortes, modernas e profissionais,
-        alinhadas com o posicionamento do negócio no mercado.
-      </p>
-      <a href="https://wa.me/244952805504?text=O%20l%C3%A1%2C%20gostaria%20de%20solicitar%20um%20logotipo%20personalizado.%20Por%20favor%2C%20informe%20mais%20detalhes%20sobre%20o%20processo%20e%20os%20valores.%20Aguardo%20seu%20retorno." target="_blank">
-        SOLICITAR LOGOTIPO AGORA
-      </a>
-    </div>
-  </article>
 
-  <!-- SERVIÇO 3 -->
-  <article class="servico">
-    <div class="servico-img">
-      <svg viewBox="0 0 300 220" aria-label="Consultoria para negócios">
-        <rect width="300" height="220" rx="15" fill="#eef7f1"/>
-        <rect x="60" y="50" width="40" height="120" fill="#0b1d3a"/>
-        <rect x="130" y="80" width="40" height="90" fill="#ff8c00"/>
-        <rect x="200" y="100" width="40" height="70" fill="#0b1d3a"/>
-      </svg>
-    </div>
-    <div class="servico-texto">
-      <h3>Consultoria Estratégica</h3>
-      <p>
-        Orientamos negócios com estratégias práticas para crescimento,
-        presença digital sólida e tomada de decisão inteligente.
-      </p>
-      <a href="#" id="openConsult">MARCAR CONSULTA PARA O SEU NEGOCIO AGORA</a>
-    </div>
-  </article>
-</section>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="consultModal">
-  <div class="modal">
-    <button class="close-modal">&times;</button>
-    <h2>📅 Solicitação de Consulta Digital</h2>
-    <div class="payment-box">
-      <h3>Pagar consulta</h3>
-      <p><strong>IBAN:</strong></p>
-      <p id="iban">0040 0000 48706148101 85</p>
-      <p><strong>Titular:</strong> Joaquim Tchindumbo</p>
-      <p><strong>Banco:</strong> BAI</p>
-      <button type="button" onclick="copiarIBAN()" class="btn-copy">Copiar IBAN</button>
-      <p id="msg" class="copy-success">IBAN copiado com sucesso!</p>
-    </div>
-    <p class="intro">
-      Após o pagamento de 5.000 Kz, preencha o formulário para agendar sua consulta digital com a CyberSev.
-    </p>
-    <form id="consultForm">
-      <div class="form-group">
-        <label for="name">Nome *</label>
-        <input type="text" id="name" required>
-      </div>
-      <div class="form-group">
-        <label for="whatsapp">WhatsApp / Telefone *</label>
-        <input type="tel" id="whatsapp" placeholder="+244 934 000 000" required pattern="^[0-9+()\s-]{6,20}$">
-      </div>
-      <div class="form-group">
-        <label for="type">Tipo de consulta</label>
-        <select id="type">
-          <option value="">Selecione</option>
-          <option>Sobre Criação de Site</option>
-          <option>Sobre Loja Digital</option>
-          <option>Sobre Marketing Digital</option>
-          <option>Orientação para começar um negocio</option>
-          <option>Consultoria Geral</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="local">Onde deseja ser atendido? *</label>
-        <select id="local" required>
-          <option value="">Selecione</option>
-          <option>WhatsApp</option>
-          <option>Messenger</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="data">Data *</label>
-        <input type="date" id="data" required>
-      </div>
-      <div class="form-group">
-        <label for="hora">Horário *</label>
-        <input type="time" id="hora" required>
-      </div>
-      <div class="form-group">
-        <label for="mensage">Descreva sua necessidade *</label>
-        <textarea id="mensage" rows="4" required minlength="10"></textarea>
-      </div>
-      <button type="submit" class="btn-send">Enviar para WhatsApp</button>
-    </form>
   </div>
-</div>
 
-<!-- LIVRARIA -->
-<section id="livraria" class="livraria">
-  <h2>Livraria & Blog</h2>
-  <h3>Visite nossa Livraria com milhares de livros gratuitos</h3>
-  <p>
-    Conteúdos de alto nível sobre tecnologia, negócios,
-    desenvolvimento pessoal e inovação digital.
-  </p>
-  <a href="https://livrariaconstrutiva223.github.io/" target="_blank">
-    Acessar Livraria
-  </a>
-</section>
+  <!-- LINHA FINAL -->
+  <div class="footer-bottom">
+    <p>© 2026 MultSev Solução Digital — Todos os direitos reservados</p>
+  </div>
 
-<!-- CONTACTO -->
-<section id="contacto" class="contacto">
-  <h2>Contacto Profissional</h2>
-  <button onclick="abrirWhatsapp()">WhatsApp</button>
-  <button onclick="abrirEmail()">Email</button>
-</section>
-
-<footer>
-  <p>© 2025 MultSev Solução Digital</p>
 </footer>
-<!-- Botão de atualização (opcional, mas útil) -->
-<button id="btn-atualizar" style="
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #0b1d3a;
-  color: white;
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 18px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  z-index: 900;
-  display: none;
-">🔄</button>
-
-<script>
-// ====== 1. PULL-TO-REFRESH (GESTO DE PUXAR PARA BAIXO) ======
-let startY = 0;
-let pulling = false;
-const threshold = 100; // Distância mínima para ativar
-
-document.addEventListener('touchstart', e => {
-  if (window.scrollY === 0) {
-    startY = e.touches[0].clientY;
-    pulling = true;
-  }
-}, { passive: true });
-
-document.addEventListener('touchmove', e => {
-  if (!pulling) return;
-  const currentY = e.touches[0].clientY;
-  const diff = currentY - startY;
-
-  if (diff > 0 && diff < threshold * 2) {
-    e.preventDefault(); // Evita rolagem elástica duplicada
-  }
-
-  if (diff >= threshold) {
-    // Mostrar feedback visual opcional aqui (ex: ícone de atualização)
-  }
-}, { passive: false });
-
-document.addEventListener('touchend', () => {
-  if (pulling && window.scrollY === 0) {
-    const endY = 0;
-    const diff = endY - startY;
-    if (diff >= threshold) {
-      location.reload(true); // Recarrega ignorando cache
-    }
-  }
-  pulling = false;
-});
-
-// ====== 2. BOTÃO DE ATUALIZAÇÃO (CLICÁVEL) ======
-const btnAtualizar = document.getElementById('btn-atualizar');
-if (btnAtualizar) {
-  // Mostrar botão apenas em mobile/touch
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-    btnAtualizar.style.display = 'block';
-  }
-  btnAtualizar.addEventListener('click', () => {
-    location.reload(true);
-  });
-}
-</script>
-
 <script src="script.js"></script>
 </body>
 </html>

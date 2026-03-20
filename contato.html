@@ -1,0 +1,268 @@
+<!DOCTYPE html><html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contato - MultSev</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  color: #fff;
+}
+
+/* FUNDO */
+.bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(270deg, #001aff, #ff6a00, #00c3ff);
+  background-size: 600% 600%;
+  animation: gradient 10s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradient {
+  0% {background-position: 0%}
+  50% {background-position: 100%}
+  100% {background-position: 0%}
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+.card {
+  padding: 25px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  background: rgba(0,0,0,0.4);
+  animation: fadeUp 0.6s;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+  flex-wrap: wrap;
+  word-break: break-word;
+  text-align: center;
+}
+
+.contact-item i {
+  color: #ff6a00;
+}
+
+form {
+  margin-top: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 30px;
+  background: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.footer {
+  margin-top: 30px;
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+@keyframes fadeUp {
+  to {opacity: 1; transform: translateY(0);} 
+  from {opacity: 0; transform: translateY(20px);} 
+}
+
+/* RESPONSIVO */
+@media(max-width:768px) {
+  h1 { font-size: 24px; }
+  .card { padding: 20px; }
+}
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.logo {
+  width: 120px;
+  max-width: 80%;
+  height: auto;
+  object-fit: contain;
+  animation: fadeUp 0.8s ease;
+}
+#btnTopo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #ff6a00, #001aff);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  transition: 0.3s;
+  z-index: 999;
+}
+
+#btnTopo:hover {
+  transform: scale(1.1);
+}
+#btnTopo {
+  backdrop-filter: blur(10px);
+}
+</style>
+</head>
+
+<body>
+<div class="bg"></div><div class="container">
+  <div class="header">
+  <img src="logo3.png" alt="MultSev Logo" class="logo">
+</div>
+  <h1 class="fade-down">Entre em Contato</h1>
+  <p class="subtitle fade-up">Fale connosco e leve o seu projeto ao próximo nível profissional.</p>  <div class="card">
+    <div class="contact-item">
+      <i class="fas fa-envelope"></i>
+      multsevsolucaodigital@gmail.com
+    </div><div class="contact-item">
+  <i class="fab fa-whatsapp"></i>
+  +244 959 622 160
+</div>
+
+<div class="contact-item">
+  <i class="fab fa-facebook"></i>
+  MultSev Solução Digital
+</div>
+
+<form onsubmit="enviarMensagem(event)">
+  <input type="text" id="nome" placeholder="Seu nome" required>
+  <input type="email" id="email" placeholder="Seu email" required>
+  <textarea id="mensagem" rows="4" placeholder="Descreva o que precisa..." required></textarea>
+  <button class="btn pulse">Enviar Mensagem</button>
+</form>
+
+  </div>  <div class="footer" id="dataHora">Carregando data...</div>
+</div>
+<a href="index.html" id="btnTopo" title="Voltar ao início">
+  <i class="fas fa-home"></i>
+</a>
+
+<script>
+function enviarMensagem(e) {
+  e.preventDefault();
+
+  let nome = document.getElementById('nome').value;
+  let email = document.getElementById('email').value;
+  let mensagem = document.getElementById('mensagem').value;
+
+  let agora = new Date();
+
+  let data = agora.toLocaleDateString('pt-PT', {
+    timeZone: 'Africa/Luanda'
+  });
+
+  let hora = agora.toLocaleTimeString('pt-PT', {
+    timeZone: 'Africa/Luanda'
+  });
+
+  let texto = `📩 *NOVO CLIENTE - MULTSEV*
+
+Olá, tudo bem? 👋
+
+Tenho interesse nos vossos serviços e gostaria de mais informações.
+
+📌 *Dados do Cliente:*
+👤 Nome: ${nome}
+📧 Email: ${email}
+
+📝 *Pedido:*
+${mensagem}
+
+⏰ *Enviado em:* ${data} às ${hora}
+
+Aguardo retorno. Obrigado.`;
+
+  let url = `https://wa.me/244959622160?text=${encodeURIComponent(texto)}`;
+
+  window.location.href = url;
+}
+
+function atualizarDataHora() {
+  let agora = new Date();
+
+  let data = agora.toLocaleDateString('pt-PT', {
+    timeZone: 'Africa/Luanda'
+  });
+
+  let hora = agora.toLocaleTimeString('pt-PT', {
+    timeZone: 'Africa/Luanda'
+  });
+
+  document.getElementById('dataHora').innerText =
+    `Atualizado em: ${data} às ${hora}`;
+}
+
+window.onscroll = function() {
+  let btn = document.getElementById("btnTopo");
+
+  if (document.documentElement.scrollTop > 150) {
+    btn.style.display = "flex";
+  } else {
+    btn.style.display = "none";
+  }
+};
+setInterval(atualizarDataHora, 1000);
+atualizarDataHora();
+</script>
+
+</body>
+</html>
