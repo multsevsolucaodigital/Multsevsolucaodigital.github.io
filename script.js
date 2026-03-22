@@ -76,7 +76,6 @@ function nextStep(tipo) {
       <li>✔ Criação de site profissional</li>
       <li>✔ Presença digital forte</li>
       <li>✔ Estratégia de crescimento</li>
-      <li>✔ Marque sua consulta grátis com um especialista</li>
     `;
 
     btnAcao.href = "servicos.html#consultoria";
